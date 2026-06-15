@@ -4,139 +4,11 @@
 >
 > ⚠️ **This repository contains NO copyrighted game assets. You must own a legal copy of the game.**
 
-[English](#english) | [中文](#chinese) | [日本語](#japanese)
+[中文](#chinese) | [English](#english) | [日本語](#japanese)
 
 ---
 
-## English
-
-### What This Is
-
-A set of Python tools to **extract assets from your legally purchased copy** of *Witch on the Holy Night* (魔法使いの夜 / Mahoutsukai no Yoru) and prepare them for use in fan-made visual novels built with Ren'Py or similar engines.
-
-Supports the **Steam version** (HuneX Gengine / `HUNEXGGEFA10` format). If you own the game on another platform, please check your installation directory for the same `data*.hfa` archive files.
-
-### Features
-
-- **Batch HFA Extraction** — Extract all 52 `.hfa` archives with a single command
-- **Format Conversion** — Auto-converts `.mzp` → PNG, `.cbg` → PNG, `.ctd` → text
-- **Audio Conversion** — Converts `.hw` (HuneX audio) to standard `.ogg` (Ogg Vorbis)
-- **Organized Output** — Automatically sorts assets into `images/`, `audio/`, `scripts/`, etc.
-- **Full Script Extraction** — Decompresses all 4 language scripts (EN / JA / ZH-CN / ZH-TW)
-- **Ren'Py-Ready** — Extracted sprites follow naming conventions ready for `show` commands
-
-### Requirements
-
-- **Python ≥ 3.11**
-- **pip packages**: `numpy`, `Pillow`
-- **A legal copy of** *Witch on the Holy Night* (purchased on [Steam](https://store.steampowered.com/app/2052410/) or other platforms)
-
-### Quick Start
-
-```bash
-# 1. Clone this repo
-git clone https://github.com/UTH0405/-mahoyo-asset-extractor.git
-cd mahoyo-asset-extractor
-
-# 2. Install dependencies
-pip install numpy Pillow
-
-# 3. Clone mahoyo_tools (the core extraction library)
-git clone https://github.com/loicfrance/mahoyo_tools.git
-
-# 4. Run extraction
-python extract_batch.py
-
-# 5. Convert audio
-python hw_to_ogg.py
-```
-
-### Customizing Game Path
-
-If your game is installed in a non-default location, edit the top of **`extract_batch.py`**:
-
-```python
-# In extract_batch.py, around line 40 — change these two variables:
-GAME_DIR = "D:/Program Files (x86)/Steam/steamapps/common/WITCH ON THE HOLY NIGHT"
-OUT_BASE = "./extracted_assets"
-```
-
-| Variable | What to set | Example (Steam on another drive) |
-|----------|-------------|----------------------------------|
-| `GAME_DIR` | Your game's root folder — the one containing `data*.hfa` files | `"E:/SteamLibrary/steamapps/common/WITCH ON THE HOLY NIGHT"` |
-| `OUT_BASE` | Where extracted assets go (relative or absolute path) | `"./my_assets"` or `"C:/mahoyo_output"` |
-
-For the audio converter, edit the default path at the bottom of **`hw_to_ogg.py`**:
-
-```python
-# In hw_to_ogg.py, main block:
-audio_dir = "./extracted_assets/audio"   # Change this to match your OUT_BASE
-```
-
-### Output Structure
-
-```
-extracted_assets/
-├── images/              # Character sprites, CGs, UI (PNG)
-├── backgrounds/         # Transition/rule images (PNG)
-├── audio/               # BGM, SFX, scene audio (OGG)
-├── videos/              # Opening movies (MP4)
-├── scripts_decompressed/# Full scripts in 4 languages (TXT)
-├── scripts_compiled/    # Compiled game scripts (CHS)
-├── scripts_raw/         # Raw compressed scripts (CTD)
-└── fonts/               # Font definition files (CCIT)
-```
-
-### Extracted Assets Summary
-
-| Asset | Format | Count | Ready for Ren'Py |
-|-------|:------:|:-----:|:----------------:|
-| Character Sprites | PNG | 14 chars, 6,200+ variants | ✅ |
-| Scene CGs | PNG | 5,980 | ✅ |
-| UI Elements | PNG | 6,080+ | ✅ |
-| BGM Soundtrack | OGG | 81 tracks | ✅ |
-| Sound Effects | OGG | 3,800+ | ✅ |
-| English Script | TXT | 24,134 lines | ✅ Reference |
-| Opening Movies | MP4 | 2~5 | ✅ |
-
-### How It Works
-
-```
-Game Directory
-  └── data*.hfa  (HuneX Gengine Archives)
-        │
-        ▼  extract_batch.py + mahoyo_tools
-        │
-  ┌─────┼──────────────────────────────┐
-  ▼     ▼         ▼         ▼          ▼
-PNG   OGG       TXT       MP4        Fonts
-(立绘) (BGM)   (剧本)   (视频)     (字体)
-```
-
-### Legal Disclaimer
-
-- **This repository does NOT contain any copyrighted game assets.**
-- This tool ONLY works with assets **you already own** through a legal purchase.
-- All extracted assets remain the intellectual property of **TYPE-MOON / Aniplex / Kinoko Nasu**.
-- This tool is intended for **personal, non-commercial use only** (e.g., fan-made visual novels, learning, research).
-- Redistribution of extracted game assets is **strictly prohibited** without authorization from the copyright holders.
-- **Witch on the Holy Night** is © TYPE-MOON. All rights reserved.
-
-### Credits
-
-- **mahoyo_tools** by [loicfrance](https://github.com/loicfrance/mahoyo_tools) — The core HFA extraction library
-- **HunexFileArchiveTool** by [LinkOFF7](https://github.com/LinkOFF7/HunexFileArchiveTool) — Original C# extraction tool
-- **nrvnqsr.com community** — File format reverse engineering research
-- Witch on the Holy Night / 魔法使いの夜 © TYPE-MOON
-
-### License
-
-This project's code is released under the **MIT License**. See [LICENSE](LICENSE).
-
-The extracted game assets are © TYPE-MOON and are NOT covered by this license.
-
----
-
+<a id="chinese"></a>
 ## 中文
 
 ### 这是什么
@@ -266,6 +138,137 @@ PNG   OGG       TXT       MP4        Fonts
 
 ---
 
+<a id="english"></a>
+## English
+
+### What This Is
+
+A set of Python tools to **extract assets from your legally purchased copy** of *Witch on the Holy Night* (魔法使いの夜 / Mahoutsukai no Yoru) and prepare them for use in fan-made visual novels built with Ren'Py or similar engines.
+
+Supports the **Steam version** (HuneX Gengine / `HUNEXGGEFA10` format). If you own the game on another platform, please check your installation directory for the same `data*.hfa` archive files.
+
+### Features
+
+- **Batch HFA Extraction** — Extract all 52 `.hfa` archives with a single command
+- **Format Conversion** — Auto-converts `.mzp` → PNG, `.cbg` → PNG, `.ctd` → text
+- **Audio Conversion** — Converts `.hw` (HuneX audio) to standard `.ogg` (Ogg Vorbis)
+- **Organized Output** — Automatically sorts assets into `images/`, `audio/`, `scripts/`, etc.
+- **Full Script Extraction** — Decompresses all 4 language scripts (EN / JA / ZH-CN / ZH-TW)
+- **Ren'Py-Ready** — Extracted sprites follow naming conventions ready for `show` commands
+
+### Requirements
+
+- **Python ≥ 3.11**
+- **pip packages**: `numpy`, `Pillow`
+- **A legal copy of** *Witch on the Holy Night* (purchased on [Steam](https://store.steampowered.com/app/2052410/) or other platforms)
+
+### Quick Start
+
+```bash
+# 1. Clone this repo
+git clone https://github.com/UTH0405/-mahoyo-asset-extractor.git
+cd mahoyo-asset-extractor
+
+# 2. Install dependencies
+pip install numpy Pillow
+
+# 3. Clone mahoyo_tools (the core extraction library)
+git clone https://github.com/loicfrance/mahoyo_tools.git
+
+# 4. Run extraction
+python extract_batch.py
+
+# 5. Convert audio
+python hw_to_ogg.py
+```
+
+### Customizing Game Path
+
+If your game is installed in a non-default location, edit the top of **`extract_batch.py`**:
+
+```python
+# In extract_batch.py, around line 40 — change these two variables:
+GAME_DIR = "D:/Program Files (x86)/Steam/steamapps/common/WITCH ON THE HOLY NIGHT"
+OUT_BASE = "./extracted_assets"
+```
+
+| Variable | What to set | Example (Steam on another drive) |
+|----------|-------------|----------------------------------|
+| `GAME_DIR` | Your game's root folder — the one containing `data*.hfa` files | `"E:/SteamLibrary/steamapps/common/WITCH ON THE HOLY NIGHT"` |
+| `OUT_BASE` | Where extracted assets go (relative or absolute path) | `"./my_assets"` or `"C:/mahoyo_output"` |
+
+For the audio converter, edit the default path at the bottom of **`hw_to_ogg.py`**:
+
+```python
+# In hw_to_ogg.py, main block:
+audio_dir = "./extracted_assets/audio"   # Change this to match your OUT_BASE
+```
+
+### Output Structure
+
+```
+extracted_assets/
+├── images/              # Character sprites, CGs, UI (PNG)
+├── backgrounds/         # Transition/rule images (PNG)
+├── audio/               # BGM, SFX, scene audio (OGG)
+├── videos/              # Opening movies (MP4)
+├── scripts_decompressed/# Full scripts in 4 languages (TXT)
+├── scripts_compiled/    # Compiled game scripts (CHS)
+├── scripts_raw/         # Raw compressed scripts (CTD)
+└── fonts/               # Font definition files (CCIT)
+```
+
+### Extracted Assets Summary
+
+| Asset | Format | Count | Ready for Ren'Py |
+|-------|:------:|:-----:|:----------------:|
+| Character Sprites | PNG | 14 chars, 6,200+ variants | ✅ |
+| Scene CGs | PNG | 5,980 | ✅ |
+| UI Elements | PNG | 6,080+ | ✅ |
+| BGM Soundtrack | OGG | 81 tracks | ✅ |
+| Sound Effects | OGG | 3,800+ | ✅ |
+| English Script | TXT | 24,134 lines | ✅ Reference |
+| Opening Movies | MP4 | 2~5 | ✅ |
+
+### How It Works
+
+```
+Game Directory
+  └── data*.hfa  (HuneX Gengine Archives)
+        │
+        ▼  extract_batch.py + mahoyo_tools
+        │
+  ┌─────┼──────────────────────────────┐
+  ▼     ▼         ▼         ▼          ▼
+PNG   OGG       TXT       MP4        Fonts
+(立绘) (BGM)   (剧本)   (视频)     (字体)
+```
+
+### Legal Disclaimer
+
+- **This repository does NOT contain any copyrighted game assets.**
+- This tool ONLY works with assets **you already own** through a legal purchase.
+- All extracted assets remain the intellectual property of **TYPE-MOON / Aniplex / Kinoko Nasu**.
+- This tool is intended for **personal, non-commercial use only** (e.g., fan-made visual novels, learning, research).
+- Redistribution of extracted game assets is **strictly prohibited** without authorization from the copyright holders.
+- **Witch on the Holy Night** is © TYPE-MOON. All rights reserved.
+
+### Credits
+
+- **mahoyo_tools** by [loicfrance](https://github.com/loicfrance/mahoyo_tools) — The core HFA extraction library
+- **HunexFileArchiveTool** by [LinkOFF7](https://github.com/LinkOFF7/HunexFileArchiveTool) — Original C# extraction tool
+- **nrvnqsr.com community** — File format reverse engineering research
+- Witch on the Holy Night / 魔法使いの夜 © TYPE-MOON
+
+### License
+
+This project's code is released under the **MIT License**. See [LICENSE](LICENSE).
+
+The extracted game assets are © TYPE-MOON and are NOT covered by this license.
+
+---
+
+<a id="japanese"></a>
 ## 日本語
 
 ### 概要
