@@ -1,0 +1,41 @@
+# Extracted assets (never commit)
+assets/
+extracted/
+output/
+*.png
+*.ogg
+*.mp4
+*.hw
+*.mzp
+*.cbg
+*.ctd
+*.ccit
+*.chs
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies (users should install themselves)
+mahoyo_tools/
+HunexFileArchiveTool/
+
+# Game files (never commit)
+WITCH ON THE HOLY NIGHT/
+data*.hfa
+*.gdb
+*.exe
+*.dll
